@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi flujo real con Cursor y Flutter — de idea a APK en una tarde · Dev en Voseo</title>
+<meta name="description" content="Cómo uso Cursor en Flutter para salir con un APK de prueba el mismo día. No es una app nueva: es un cambio acotado.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>Mi flujo real con Cursor y Flutter — de idea a APK en una tarde</h1>
+  <p>Cursor no te fabrica una app de Play en cuatro horas. Eso es un reel. Lo que sí hago, una tarde de entre semana, es <strong>un cambio acotado</strong> en Mi Mascota o Mis Plantas y <strong>un APK en el Xiaomi</strong> antes de cenar. Si al día siguiente no abro esa build, no era urgente: no va a Play.</p>
+<p>Esto es el flujo. Sin “10x developer”. Sin métricas inventadas.</p>
+<h2>El problema</h2>
+<p>Si le pedís a Cursor “hacéme una app de hábitos con IA”, te tira un proyecto que parece de tutorial. Compila. No es la tuya. No tiene tu package, tus reglas, tu centro de ayuda, tu ficha. Yo ya tengo apps en Play. El trabajo de verdad es <strong>mover una cosa</strong> sin romper el resto.</p>
+<p>La tarde se va si mezclás cinco tickets: un banner, un idioma, un icono, un bug de Xiaomi y “ya que estamos, rediseñá el onboarding”. Ahí Cursor escribe mucho y vos no revisás nada.</p>
+<h2>Una tarde = una cosa</h2>
+<p>Antes de abrir el chat, escribo en una línea qué tiene que existir al final. Ejemplos reales, no épicos:</p>
+<ul>
+<li>El usuario pega el nombre de la planta, no solo el escáner.</li>
+<li>La foto se ve a pantalla completa, con pellizco.</li>
+<li>El APK de prueba se instala y esa pantalla no crashea.</li>
+</ul>
+<p>Si no entra en una frase, no entra en una tarde. Play, AdMob y la guía de USD 9 son <strong>otro</strong> día. Hoy es código + APK.</p>
+<h2>Lo que hago yo (el orden)</h2>
+<ol>
+<li><strong>Git sucio, no.</strong> Commit o stash de lo anterior. Si Cursor se manda, quiero poder volver.</li>
+<li><strong>Repo correcto.</strong> Mi Mascota no es Mis Plantas. Abrí la carpeta que vas a tocar. Las reglas de Cursor de ese proyecto ya están; no las reescribo cada vez.</li>
+<li><strong>Pedido chico.</strong> Archivo o pantalla si la sé. “En la ficha de la planta, debajo de la foto, poné órgano (hoja / planta entera). No pongas el texto encima de la imagen.” Voseo, concreto, una pantalla.</li>
+<li><strong>Leo el diff.</strong> Si no entiendo un archivo, no lo dejo. Le pido que explique o que deshaga. Aceptar todo el lote es cómo se te rompe el análisis de Flutter.</li>
+<li><strong><code>flutter analyze</code></strong> y correr en Chrome o en el teléfono. El analizador no es capricho: es el filtro barato antes del APK.</li>
+<li><strong><code>flutter build apk</code></strong> (debug o release de prueba, el que uso para el Xiaomi). Lo mando por WhatsApp. Sin cable. Si no la instalo yo, el cambio no existió.</li>
+<li><strong>Commit local</strong> cuando anda. Push solo si lo pedí. La fábrica de videos de Dev en Voseo es <strong>otro repo</strong>: no mezclo un Short con el <code>pubspec</code> de Mis Plantas.</li>
+</ol>
+<h2>Un ejemplo de la última tanda (Mis Plantas)</h2>
+<p>No fue “la app desde cero”. Fue: el nombre se puede escribir a mano; la foto a pantalla completa con pellizco; copiar o compartir la ficha. Cada una fue una tarde o un rato, con APK de prueba en el teléfono. El escáner sigue siendo el centro; eso no se discute en el mismo prompt que el zoom.</p>
+<p>Eso es autoridad de verdad: cicatriz de una app en Play, no un hilo de “50 atajos de ChatGPT”.</p>
+<h2>Cursor no es el autor de la app</h2>
+<p>Yo decido el producto. Cursor tipea más rápido. Si el pedido es vago, el código es vago. Si el pedido es “como las apps de hábitos que ganan millones”, estás pidiendo humo: <strong>no tengo esos números</strong> y no los voy a fingir.</p>
+<p>Tampoco le pido que invente un sexto Micro-SaaS. Tengo Mi Mascota y Mis Plantas en Play, RachaApp y SuerteUY en camino. El flujo diario es <strong>esas</strong> bases, no un <code>flutter create</code> de hobby cada lunes.</p>
+<h2>Errores que ya cometí</h2>
+<ul>
+<li>Dejar que reescriba media app “para dejarlo lindo”. Después no sé qué cambió.</li>
+<li>Pedir i18n, AdMob y una pantalla nueva en el mismo prompt. Sale un lio y la tarde se fue.</li>
+<li>Confiar en el preview de Cursor y no instalar el APK. En Xiaomi aparecen permisos, batería y cosas que el emulador no te grita.</li>
+<li>Mezclar este canal (Flutter/Play) con “100 trucos de ChatGPT”. Eso no es cicatriz. El truco mío es <strong>Cursor sobre una app que ya está en la tienda</strong>.</li>
+</ul>
+<h2>Qué te llevás</h2>
+<p>No te llevás un atajo a ser indie famoso. Te llevás un ritual: una frase, un diff, analyze, APK, teléfono. Mañana otra frase. Así salieron cambios de Mis Plantas (nombre a mano, zoom, copiar ficha) sin inflar la ficha de Play con promesas.</p>
+<p>La semana pasada: cómo publiqué como particular, sin empresa. Esta semana: cómo <strong>sigo</strong> construyendo después del “publicado”. La que viene, si seguís: el banner de AdMob <strong>sin</strong> romper la UI — cuando Google deje de tener la cuenta en verificación.</p>
+<h2>Cierre</h2>
+<p>Si programás con Cursor en español y tenés (o querés) una app Flutter de verdad, este es el ritmo que aguanta 5 a 8 horas por semana. No es un maratón de 14 horas ni un curso de 40.</p>
+<p>El checklist de Play (cuenta, AAB, idiomas, ads) sigue en la guía de Gumroad, USD 9: <a href="https://bentancor2.gumroad.com/l/krcfiy">bentancor2.gumroad.com/l/krcfiy</a>. Apps reales: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> en Google Play. Video largo de esta semana: el mismo flujo, hablado.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>

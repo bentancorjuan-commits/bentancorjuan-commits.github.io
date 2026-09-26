@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdMob en Flutter — banner que no rompe la app · Dev en Voseo</title>
+<meta name="description" content="Cómo pongo un banner en Mi Mascota y Mis Plantas sin tapar botones ni mentir en la ficha. Una cuenta. Play primero.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>AdMob en Flutter — banner que no rompe la app</h1>
+  <p>AdMob no es “pegar un anuncio y esperar el sueldo”. En Mis Plantas y Mi Mascota el anuncio es un <strong>banner abajo, en el inicio</strong>. Si te tapa el botón, si salta al abrir, o si la ficha decía “sin anuncios”, no estás monetizando: estás entrenando al usuario a desinstalar y a Google a mirarte feo.</p>
+<p>Esto es para quien está <strong>trabado</strong>: el anuncio le come el flujo y no sabe si el plugin está mal o el layout. No es para quien ya tiene el RPM lindo y tres cuentas “de prueba”.</p>
+<p>Esta semana no hay cifras de lo que “paga el banner”. Google todavía puede tener la cuenta en verificación. Una persona, <strong>una</strong> cuenta. Si te rechazan, se reenvía. No se abre otra.</p>
+<h2>El problema (el atasco de verdad)</h2>
+<p>El atasco no es el paquete <code>google_mobile_ads</code>. El atasco es este:</p>
+<ul>
+<li>Pediste AdMob <strong>el día uno</strong>, sin app en Play.</li>
+<li>El banner se come el FAB, el escáner o el “guardar”.</li>
+<li>Un intersticial al abrir. La gente cierra. Vos también la cerrarías.</li>
+<li>Tres Gmail “por las dudas” porque la verificación falló.</li>
+<li>La ficha sigue diciendo paraíso sin ads.</li>
+</ul>
+<p>Yo ya publiqué dos apps como particular, desde Montevideo. El banner va <strong>después</strong> de que la app anda en el Xiaomi y está en la tienda. Semana 1 de este canal: Play primero. Semana 2: un cambio y un APK. Esta: el anuncio <strong>sin</strong> romper esa app.</p>
+<h2>Una sola regla de producto</h2>
+<p><strong>Gratis con anuncios.</strong> Sin suscripción obligatoria. Banner en home o pantalla principal. Punto.</p>
+<p>No:</p>
+<ul>
+<li>Intersticial al lanzar.</li>
+<li>Anuncio encima del onboarding.</li>
+<li>Anuncio en medio de una partida (QueEs, si algún día hay ads: menú, no el juego).</li>
+<li>IDs de producción en el git.</li>
+</ul>
+<p>Sí:</p>
+<ul>
+<li>Un rectángulo abajo (o una franja que <strong>no</strong> empuje el contenido importante fuera de alcance).</li>
+<li><code>MobileAds.initialize</code> cuando hay ID real.</li>
+<li>IDs por <code>--dart-define</code> o un <code>secrets</code> que <strong>no</strong> se commitea.</li>
+<li>FAQ: “¿Por qué hay anuncios?” en el centro de ayuda, en español y en inglés.</li>
+</ul>
+<h2>Dónde lo pongo yo</h2>
+<p>En <strong>Mis Plantas</strong> el banner vive en el <strong>Inicio</strong>, no encima de la foto a pantalla completa ni del escáner. En <strong>Mi Mascota</strong>, home. El usuario puede usar la app. El anuncio está. No es un video a pantalla completa a los tres segundos.</p>
+<p>Si el diseño “no entra”, no agrandés el anuncio: <strong>achicá el ego del layout</strong>. Padding, <code>SafeArea</code>, el botón principal más arriba. El Xiaomi te lo grita: un banner + barra de gestos + un FAB mal puesto = un tap que no existe.</p>
+<p>El usuario que está trabado no busca “cómo integrar AdMob en Flutter 2026”. Busca por qué el escáner no se toca, por qué el onboarding tiene un video de 30 segundos, por qué Play le marcó la ficha. Este canal es para ese atasco, no para quien ya tiene tres apps y un RPM lindo.</p>
+<p>Probá el APK de prueba <strong>con el banner de test</strong> en debug. Producción: IDs reales, app ya vinculada en AdMob a la ficha de Play. No subas a producción el ID de prueba.</p>
+<h2>Una cuenta. Si te rechazan, reenviá</h2>
+<p>AdMob: la cuenta de siempre (<code>juangoadhotmail</code> en mi caso). Publisher uno. Mezclar cuentas es el error caro. Verificación rechazada no se “arregla” con un Gmail nuevo: se <strong>reenvía</strong> en la misma. Mientras dice “en revisión”, no toques Reenviar otra vez.</p>
+<p>No invento que “ya paga”. Paga cuando Google quiere, con umbral, con <code>app-ads.txt</code> alineado (eso es la <strong>semana que viene</strong>). Hoy: que el anuncio no rompa la app ni la ficha.</p>
+<h2>La ficha tiene que decir lo mismo que la pantalla</h2>
+<p>Si hay banner, Play y la bio dicen <strong>gratis con anuncios</strong>. Instagram de la app: “Gratis · con anuncios discretos”. No prometas “sin anuncios” y después un AdMob. Google lee. El usuario también. Semana 1 ya lo dijimos; esta semana es el código que hace cierta esa frase.</p>
+<h2>Errores que ya cometí (o evité a tiempo)</h2>
+<ul>
+<li>Pedir AdMob con la app todavía en el disco.</li>
+<li>Dejar que Cursor te meta un interstitial “porque convierte más”. No. Convierte en bronca.</li>
+<li>Poner el banner en todas las rutas “ya que está el plugin”. El inicio alcanza.</li>
+<li>Subir AAB con APPLICATION_ID de prueba.</li>
+<li>Abrir una segunda cuenta AdMob.</li>
+<li>Olvidar el centro de ayuda: si hay ads y nadie explica por qué, el mail llega igual. Una FAQ corta cierra eso.</li>
+</ul>
+<p>RachaApp, cuando esté en Play, el mismo patrón: banner, no paywall. SuerteUY: consulta, no “sistemas”; ads el día que esté en la tienda, no antes. QueEs: si hay anuncio, el menú.</p>
+<h2>Cierre</h2>
+<p>Si estás trabado porque el anuncio te tapa el flujo, no es un problema de “RPM”. Es un problema de <strong>dónde</strong> lo pegaste. Banner. Home. Botones libres. Una cuenta. Play primero.</p>
+<p>Checklist de publicar (cuenta, AAB, idiomas, ads): guía Play LATAM, USD 9, <a href="https://bentancor2.gumroad.com/l/krcfiy">bentancor2.gumroad.com/l/krcfiy</a>. Apps: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> en Play. La semana que viene: <code>app-ads.txt</code> y por qué Google no te acredita si el dominio no cierra.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>

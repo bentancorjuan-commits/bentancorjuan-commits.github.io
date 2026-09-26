@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>app-ads.txt y GitHub Pages — por qué Google no te paga · Dev en Voseo</title>
+<meta name="description" content="El banner puede verse y Google igual no acredita. Sitio web de Play, app-ads.txt en la raíz de GitHub Pages, un dominio para todas las apps.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>app-ads.txt y GitHub Pages — por qué Google no te paga</h1>
+  <p>El banner de AdMob puede verse en el teléfono y Google igual no te acredita. No es el plugin. No es “esperá un mes más”. Es un archivo de texto en un dominio que <strong>Play y AdMob tienen que coincidir</strong>. Si el Sitio web de la ficha apunta a un lado y <code>app-ads.txt</code> vive en otro, el anuncio existe y la plata no.</p>
+<p>Esto es para quien está <strong>trabado</strong>: ya puso el banner (semana 3 de este canal), ya tiene la app en Play (semana 1), y el panel sigue en cero o “no verificado”. No es para quien ya tiene el archivo en la raíz y tres apps alineadas.</p>
+<p>Tampoco hay cifra de lo que “paga AdMob”. Verificación, umbral y plazos los pone Google. Hoy: que el dominio cierre.</p>
+<h2>El atasco no es “un txt”</h2>
+<p>El atasco real se ve así:</p>
+<ul>
+<li>El banner sale. El saldo no.</li>
+<li>Pegaste <code>ads.txt</code> (el de los <strong>sitios</strong> AdSense) y AdMob te pide <code>app-ads.txt</code> (el de las <strong>apps</strong>).</li>
+<li>En Play pusiste la URL del archivo (<code>…/app-ads.txt</code>) en vez del <strong>sitio</strong>.</li>
+<li>El archivo está en un repo, pero GitHub Pages no lo sirve en la <strong>raíz</strong> del dominio.</li>
+<li>Cada app Play apunta a un dominio distinto: el blog, el GitHub personal, un Notion.</li>
+</ul>
+<p>Yo publico como particular desde Montevideo. Mis Plantas y Mi Mascota usan <strong>el mismo</strong> sitio: <code>https://bentancorjuan-commits.github.io</code>. El archivo vive en <code>https://bentancorjuan-commits.github.io/app-ads.txt</code>. Una raíz. Todas las fichas iguales.</p>
+<p>Mis blogs viejos de AdSense son otra historia: ahí duele <code>ads.txt</code>. Acá duele <code>app-ads.txt</code>. No mezcles los dos archivos ni abras otro sitio “para ads”.</p>
+<h2>Qué es cada cosa (sin mezclar)</h2>
+<p><strong>Play Console</strong> es la ficha. Ahí, en <strong>Aumentar usuarios → Presencia en Google Play Store → Configuración de la tienda → Sitio web</strong>, va el dominio. Sin <code>/app-ads.txt</code> al final. En mi caso: <code>https://bentancorjuan-commits.github.io</code>.</p>
+<p><strong>AdMob</strong> es el banner in-app. Ahí copiás las líneas <code>google.com, pub-…, DIRECT, …</code> que te da el panel y las pegás en el archivo.</p>
+<p><strong>GitHub Pages</strong> es el hosting de ese archivo. Gratuito. Un repo <code>usuario.github.io</code>, un <code>app-ads.txt</code> en la raíz, Pages activado. No hace falta un dominio pago ni un VPS.</p>
+<p>Si el Sitio web de Play es <code>https://midominio.com</code> y el archivo está en <code>https://otrolado.github.io/app-ads.txt</code>, Google no cierra el círculo. El usuario ve el anuncio. Vos no.</p>
+<h2>Lo que hago yo</h2>
+<p>Un solo dominio para <strong>todas</strong> las apps Play: Mi Mascota, Mis Plantas, y el día que salgan RachaApp o SuerteUY, el mismo. No un blog por app. No “el sitio de la marca” en un lado y Pages en otro.</p>
+<p>En el archivo van las líneas DIRECT de la cuenta AdMob que uso (<code>juangoadhotmail</code>). Si en algún momento hubo otro publisher histórico, <strong>también</strong> queda esa línea. Borrar la vieja “para limpiar” es un buen modo de romper una app que todavía la referencia.</p>
+<p>AdMob verifica el archivo contra el Sitio web de <strong>esa</strong> app en Play. En Mis Plantas eso ya lo pasé: la pantalla de verificación cierra cuando el dominio y el txt coinciden. Eso no es “ya me pagan”. Es “Google encontró el archivo”. La cuenta puede seguir en revisión. El umbral sigue siendo de Google.</p>
+<p>No pongas IDs de unidad en el <code>app-ads.txt</code>. Eso no va ahí. Van publisher IDs y el tipo DIRECT / RESELLER. El banner del código (semana 3) es otra pieza.</p>
+<h2>Pasos (sin humo)</h2>
+<ol>
+<li><strong>Sitio web en Play</strong>, en cada app que vaya a tener ads: el dominio, no el archivo. Misma URL en Mi Mascota y en Mis Plantas.</li>
+<li><strong>Repo GitHub Pages</strong> de ese dominio. Archivo <code>app-ads.txt</code> en la <strong>raíz</strong>, no en <code>/docs/app-ads.txt</code> ni en un subdirectorio del blog del canal.</li>
+<li><strong>Pegá las líneas</strong> que te da AdMob. Abrí <code>https://tu-dominio/app-ads.txt</code> en el teléfono. Tiene que ser texto plano, 200 OK, sin login, sin HTML de “404 de GitHub”.</li>
+<li><strong>Esperá la CDN de Pages.</strong> A veces el repo ya tiene el commit y la URL todavía sirve el 404 viejo. Recargá. No inventes otro dominio a los diez minutos.</li>
+<li><strong>En AdMob</strong>, verificá la app. Si dice que no encuentra el archivo: Sitio web de Play ≠ dominio del txt, o el txt no está en la raíz.</li>
+<li><strong>No abras otra cuenta AdMob</strong> para “probar otro pub”. Semana 3: una cuenta, se reenvía. El txt tiene que listar <strong>esa</strong> cuenta.</li>
+</ol>
+<h2>Errores que ya cometí (o evité a tiempo)</h2>
+<ul>
+<li>Confundir <code>ads.txt</code> de los blogs con <code>app-ads.txt</code> de las apps. El banner rojo de AdSense en un blog no se arregla con el archivo de Play, y al revés tampoco.</li>
+<li>Poner en Play la URL larga del archivo. Google espera el <strong>sitio</strong>.</li>
+<li>Un dominio distinto por app “porque cada una tiene su marca”. Una raíz. Listo.</li>
+<li>Subir el txt a <code>github.com/…/blob/main/app-ads.txt</code> y creer que eso es Pages. Blob no es el dominio público.</li>
+<li>Tocarlo todos los días mientras AdMob está <strong>en revisión</strong>. El archivo se alinea; Reenviar otra vez, no.</li>
+<li>Inventar que “con el txt ya cobrás”. Cobra cuando Google verifica, pasa umbral y quiere. El txt solo deja de ser el motivo por el que <strong>no</strong> acreditan.</li>
+</ul>
+<p>RachaApp y SuerteUY, el día que estén en la tienda con ads: mismo sitio, mismas líneas. QueEs, si algún día hay anuncio: menú (semana 3) y el mismo dominio.</p>
+<h2>Cierre</h2>
+<p>Si el banner se ve y el panel no se mueve, no es un problema de RPM. Es un problema de <strong>dominio</strong>. Sitio web de Play. <code>app-ads.txt</code> en la raíz de GitHub Pages. Un publisher. Todas las apps al mismo lugar.</p>
+<p>Checklist de publicar (cuenta, AAB, idiomas, ads): guía Play LATAM, USD 9, <a href="https://bentancor2.gumroad.com/l/krcfiy">bentancor2.gumroad.com/l/krcfiy</a>. Apps: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> en Play. La semana que viene: español e inglés en la ficha, el requisito de Play que más gente se salta.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>

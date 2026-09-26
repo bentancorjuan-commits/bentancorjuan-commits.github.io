@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Español e inglés — el requisito de Play que más gente se salta · Dev en Voseo</title>
+<meta name="description" content="Play no es solo la ficha en español. UI completa ES+EN, selector Automático, ficha en los dos idiomas. Lo que hago en Mi Mascota y Mis Plantas.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>Español e inglés — el requisito de Play que más gente se salta</h1>
+  <p>Publicaste la app. La ficha está en español. El celular de un primo en Canadá abre “Guardar” al lado de “Save” y un botón que no dice nada. Play no te mandó un mail de “falta inglés”. Igual te está midiendo: mercados, ficha, captura, texto del ícono. Si la UI está a medias, no es un detalle. Es el requisito que más gente de LATAM se salta porque “yo publico para Uruguay”.</p>
+<p>Esto es para quien está <strong>trabado</strong>: tiene la app en la tienda (semana 1 de este canal) y cree que con el español alcanza. No es para quien ya tiene paridad ARB y la ficha EN al día.</p>
+<p>No hay cifra de descargas. No hay “el inglés te duplica las installs”. Hoy: que la app y la ficha hablen los dos idiomas, de verdad.</p>
+<h2>El atasco no es “traducir”</h2>
+<p>El atasco real se ve así:</p>
+<ul>
+<li>Textos pegados en el Dart: <code>'Guardar'</code>, <code>'Escanear'</code>. El inglés nunca existió.</li>
+<li>Cursor te tiró un diff enorme. Aceptaste. Quedó la mitad en ES y la mitad en EN.</li>
+<li>La ficha de Play está solo en español. El ícono del cajón dice Mis Plantas aunque el sistema esté en English.</li>
+<li>El onboarding, los errores y la pantalla vacía siguen en español. El menú, no.</li>
+<li>Forzaste inglés “porque Play es global” y el usuario de Montevideo ve My Pet.</li>
+</ul>
+<p>Yo publico como particular desde Montevideo. <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> van a Play con UI completa en español y en inglés. Selector: Automático (el del celular), Español, English. Por defecto, el sistema. No el inglés.</p>
+<p><strong>SuerteUY</strong> es la excepción: consulta uruguaya, solo español. No es un atajo para el resto. Si la app sale a más de un país, los dos idiomas. RachaApp, el mismo patrón cuando esté en la tienda.</p>
+<p>Mis Plantas un tiempo estuvo <strong>solo en español</strong>. Eso no pasa el gate. Hubo que armar ARB, el selector, el nombre del launcher en <code>values</code> y <code>values-en</code> (Mis Plantas / My Plants). No es un plugin mágico. Es paridad.</p>
+<h2>Qué pide Play de verdad</h2>
+<p>Play quiere que la <strong>experiencia</strong> coincida con el idioma del usuario. Eso son tres capas, no una:</p>
+<ol>
+<li><strong>La app.</strong> Cada texto visible: botones, errores, vacío, onboarding, notificaciones. Español rioplatense. Inglés claro, no un Google Translate del voseo.</li>
+<li><strong>El ícono del teléfono.</strong> Android: <code>values/strings.xml</code> y <code>values-en/strings.xml</code>. Si no, el cajón miente.</li>
+<li><strong>La ficha.</strong> Descripción corta y larga en ES <strong>y</strong> EN. Si prometiste “My Plants” y adentro dice solo “Mis Plantas”, Google lee. El usuario también.</li>
+</ol>
+<p>Semana 1: publicar sin empresa. Semana 4: el dominio de AdMob. Esta: el idioma. La semana que viene: el centro de ayuda (FAQ en los dos idiomas). Hoy no armo ese centro. Hoy no dejo un “Save” huérfano.</p>
+<h2>Lo que hago yo</h2>
+<p>Archivos <code>app_es.arb</code> y <code>app_en.arb</code>. <code>flutter gen-l10n</code>. <code>flutter_localizations</code>. Un selector de tres opciones, no un switch escondido. Clave <code>app_locale</code>: <code>system</code>, <code>es</code> o <code>en</code>. Si el celular está en inglés y el usuario no tocó nada, ve inglés. Si está en español, español. Fallback: español. No un crash.</p>
+<p>No hardcodeo. Si Cursor te deja un string en el widget, no es “más rápido”: es deuda que Play no perdona en la revisión de la ficha y que el usuario perdona menos.</p>
+<p>La ficha: <code>short_description</code> y <code>full_description</code> en los dos. El nombre de la app en la tienda también. Mi Mascota / el equivalente en inglés. Mis Plantas / My Plants. No un nombre inventado para “SEO mundial”.</p>
+<p>Errores típicos que ya vi (o evité):</p>
+<ul>
+<li>Traducir solo el menú y dejar el escáner, el clima o las notificaciones en español.</li>
+<li>Poner el selector y no persistirlo: al reabrir, vuelve al azar.</li>
+<li>Copiar el español al archivo EN y cambiar dos palabras. Eso se nota.</li>
+<li>Publicar el AAB antes de <code>gen-l10n</code> y que una clave falte en un idioma.</li>
+<li>Usar SuerteUY de excusa para saltear inglés en una app que sí va afuera.</li>
+<li>Dejar el centro de ayuda para “después”: si hay ads o un rechazo de Play, el mail llega en el idioma que no cubriste. Eso es la semana que viene; hoy, que no haya un botón huérfano.</li>
+</ul>
+<p>Quien está trabado no busca “i18n Flutter 2026”. Busca por qué la ficha se ve pobre, por qué el cajón dice una cosa y la pantalla otra, por qué un review en inglés dice que la app “está en español”. Este canal es para ese atasco.</p>
+<h2>Pasos (sin humo)</h2>
+<ol>
+<li><strong>Día uno del proyecto</strong>, no el día del AAB: ARB ES+EN, delegates, locales <code>es</code> y <code>en</code>.</li>
+<li><strong>Cada pantalla nueva:</strong> el texto va a los dos archivos. Después el widget. No al revés.</li>
+<li><strong>Selector</strong> en Ajustes (Mis Plantas) o el menú (Mi Mascota): Automático / Español / English.</li>
+<li><strong>Android</strong> <code>app_name</code> en <code>values</code> y <code>values-en</code>.</li>
+<li><strong>Ficha Play</strong> ES y EN, el mismo día que subís el bundle. No “después lo traduzco”.</li>
+<li><strong>Probá</strong> el APK con el celular en inglés. Recorré onboarding, un error, una lista vacía. Si queda una frase en español, no está listo.</li>
+</ol>
+<h2>Cierre</h2>
+<p>Si estás trabado porque “en Uruguay alcanza el español”, Play no te va a discutir. Te va a dejar una app que se siente a medias afuera y desprolija adentro. Dos idiomas. Paridad. Automático por defecto. Ficha también.</p>
+<p>Checklist de publicar (cuenta, AAB, idiomas, ads): guía Play LATAM, USD 9, <a href="https://bentancor2.gumroad.com/l/krcfiy">bentancor2.gumroad.com/l/krcfiy</a>. Apps: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> en Play. La semana que viene: el centro de ayuda que me ahorra mails.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía Play LATAM · Dev en Voseo</title>
+<meta name="description" content="Dev en Voseo">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+<article class="post"><h1>Publicá tu app Flutter en Google Play desde LATAM</h1><p class="muted">Versión abierta del checklist. En Gumroad está el mismo archivo listo para llevar.</p><p>Checklist de Juan Bentancor (Montevideo). Particular, sin RUT. Apps de referencia: Mi Mascota y Mis Plantas.</p>
+<p><strong>Qué incluye este pack (USD 9):</strong></p>
+<ol>
+<li>Este checklist (el orden real, no el de los hilos).</li>
+<li>Textos de ficha Play listos para pegar (ES+EN).</li>
+<li>Xiaomi: APK de prueba sin USB.</li>
+<li>Plantilla <code>app-ads.txt</code>.</li>
+<li>Política de datos si todo queda en el teléfono + HTML para tu sitio.</li>
+<li>Cómo llené el cuestionario de Play (audiencia, ads, Data safety).</li>
+<li>Medidas de icono, gráfico y capturas.</li>
+<li>Si te rechazan: orden, no drama.</li>
+<li>Notas de versión ES+EN.</li>
+<li>Keystore (para no perder la app) + comandos Flutter que sí uso.</li>
+</ol>
+<p>Abrí <code>LEEME.html</code>. Todo está en HTML para el navegador. Los extras son para copiar y pegar, no para “estudiar”.</p>
+<h2>1. Antes de abrir Play Console</h2>
+<ul>
+<li>☐ La app se puede usar 5 minutos sin que vos la expliques.</li>
+<li>☐ Hay un APK de prueba instalado en un teléfono real.</li>
+<li>☐ El package name es definitivo (<code>com.tuapellido.tuapp</code>). No se cambia más.</li>
+<li>☐ Sabés si va a haber anuncios. Si sí, la ficha va a decir <strong>Gratis con anuncios</strong>.</li>
+</ul>
+<h2>2. Cuenta de desarrollador</h2>
+<ul>
+<li>☐ Play Console a tu nombre y apellido reales.</li>
+<li>☐ Perfil de pagos como <strong>particular</strong>, no como empresa fantasma.</li>
+<li>☐ Si Google pide DUNS/RUT y no tenés: no mientas una LLC. Completá lo de persona física.</li>
+<li>☐ Mail que sí leés. Va a llegar de todo.</li>
+</ul>
+<h2>3. Idiomas (gate silencioso)</h2>
+<ul>
+<li>☐ UI en español (voseo si tu audiencia lo habla) <strong>y</strong> inglés, salvo que la app sea 100% local.</li>
+<li>☐ Ficha: título, descripción corta, descripción larga, en los dos idiomas.</li>
+<li>☐ Capturas con texto legible. No un mockup de Dribbble que no existe en el APK.</li>
+</ul>
+<h2>4. Qué va adentro de la app (se nota en la review)</h2>
+<ul>
+<li>☐ Centro de ayuda: FAQ, tutoriales, novedades, contacto.</li>
+<li>☐ Política de datos honesta: si todo es local en el teléfono, decilo.</li>
+<li>☐ Botón Atrás del sistema vuelve atrás (no se “come” el gesto).</li>
+<li>☐ Onboarding con <strong>Saltar</strong>. Nadie está preso en tus tres pantallas.</li>
+</ul>
+<h2>5. Build de producción</h2>
+<ul>
+<li>☐ <code>flutter build appbundle --release</code> (comandos en extras).</li>
+<li>☐ Firma de upload key por tu lado. El keystore <strong>no</strong> va a git. Backup en USB.</li>
+<li>☐ <code>versionCode</code> sube en cada AAB. Play no acepta el mismo número.</li>
+<li>☐ Target API al nivel que pide Play ahora (en 2026, apps nuevas: API 35+).</li>
+<li>☐ Si hay AdMob: IDs por <code>dart-define</code> / secrets, no hardcodeados.</li>
+<li>☐ En debug: IDs de prueba de Google. En el AAB de Play: IDs reales.</li>
+</ul>
+<h2>6. Ficha</h2>
+<ul>
+<li>☐ Beneficio en la primera línea, no “esta aplicación permite gestionar de manera eficiente…”.</li>
+<li>☐ Si hay banner: <strong>Gratis con anuncios</strong> en corta y larga.</li>
+<li>☐ Icono 512, gráfico 1024×500, mínimo 2 capturas reales (medidas en extras).</li>
+<li>☐ Sitio web: uno solo. GitHub Pages sirve. Ese mismo dominio va a ser el de <code>app-ads.txt</code> y la política.</li>
+<li>☐ Cuestionario de contenido + Data safety alineados con lo que la app hace (extras).</li>
+</ul>
+<h2>7. Publicar</h2>
+<ul>
+<li>☐ Prueba interna o cerrada si la app es sensible. Si es herramienta simple, producción con cuidado.</li>
+<li>☐ Completá cuestionario de contenido, datos, ads.</li>
+<li>☐ Esperá la review. No spamees “consultar”.</li>
+</ul>
+<h2>8. AdMob (después)</h2>
+<ul>
+<li>☐ Una sola cuenta AdMob por persona. Si te rechazan, reenviá o apelá. No abras la tercera Gmail.</li>
+<li>☐ Vinculá la app <strong>desde Play</strong>, no “app sin tienda”.</li>
+<li>☐ Una unidad <strong>banner</strong> para inicio. No intersticial al arrancar.</li>
+<li>☐ <code>https://tudominio/app-ads.txt</code> con tu <code>pub-</code>.</li>
+<li>☐ Play → Sitio web = ese dominio. Esperá el crawl (días, a veces una semana).</li>
+</ul>
+<h2>9. Probar como usuario sucio</h2>
+<ul>
+<li>☐ Instalá el AAB/APK de producción (o el de prueba canónico) en el teléfono que no es el de desarrollo eterno.</li>
+<li>☐ Xiaomi: fuentes desconocidas, una vez, y listo.</li>
+<li>☐ Un archivo <code>App-prueba.apk</code> que se <strong>sobrescribe</strong>. No 14 APKs en Descargas.</li>
+</ul>
+<h2>10. Lo que no hace falta el día 1</h2>
+<ul>
+<li>Dominio pago.</li>
+<li>LLC en Delaware.</li>
+<li>Trailer en After Effects.</li>
+<li>Campaña de Google Ads con la ficha a medias.</li>
+<li>Intersticiales, rewarded, “remove ads” a USD 49,99.</li>
+</ul>
+<h2>11. Errores caros (ya los pagué en tiempo)</h2>
+<ol>
+<li>Segunda cuenta AdMob “por las dudas”.</li>
+<li>Ficha que dice sin anuncios y un banner en home.</li>
+<li>Pauta paga con capturas feas.</li>
+<li>Subir debug a producción.</li>
+<li>Traducir solo los botones y dejar el FAQ en un solo idioma.</li>
+</ol>
+<h2>12. Después del “publicado”</h2>
+<p>La app no es un sueldo. Es una canilla. Las otras: contenido que apunte a la ficha, esta guía, afiliados honestos. El banner cobra cuando hay gente. La gente llega cuando la ficha y el producto no mienten.</p>
+<h2>13. FAQ corto</h2>
+<p><strong>¿Hace falta empresa?</strong> No para una app gratis con anuncios. Particular alcanza.</p>
+<p><strong>¿Hace falta dominio pago?</strong> No el día 1. GitHub Pages sirve si el <code>app-ads.txt</code> está en la raíz.</p>
+<p><strong>¿Puedo poner AdMob antes de Play?</strong> No. App publicada, mismo sitio, después el banner.</p>
+<p><strong>¿Intersticial al abrir?</strong> No. Banner en home. Si no, te desinstalan.</p>
+<p>— Juan Bentancor · Dev en Voseo</p></article>
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>

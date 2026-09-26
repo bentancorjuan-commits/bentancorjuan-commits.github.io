@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo publiqué una app Flutter en Google Play desde Uruguay (sin empresa) · Dev en Voseo</title>
+<meta name="description" content="El camino real, sin RUT y sin agencia: cuenta Play, AAB, idiomas y lo que Google sí te pide.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>Cómo publiqué una app Flutter en Google Play desde Uruguay (sin empresa)</h1>
+  <p>No hace falta una sociedad anónima ni un estudio en Pocitos. Publiqué <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> como particular, desde Montevideo, con Flutter y Cursor. Este es el camino real, no el de los hilos que te venden “lanzá en 24 horas”.</p>
+<h2>El problema</h2>
+<p>Play Console asusta: cuenta de desarrollador, ficha, idiomas, AAB, política de datos, ads. Si estás en LATAM, encima aparece el fantasma del RUT y de “verificá tu empresa”. Yo no tengo RUT. Seguí igual.</p>
+<h2>Lo que sí necesitás (y lo que no)</h2>
+<p>Sí:</p>
+<ul>
+<li>Una app que <strong>ande</strong> (APK de prueba que instales vos).</li>
+<li>Cuenta de Google Play Console a tu nombre.</li>
+<li>Un <strong>AAB</strong> firmado, no un APK suelto, para producción.</li>
+<li>Ficha en <strong>español e inglés</strong> si apuntás a más de Uruguay (Play lo trata como gate).</li>
+<li>Un sitio web mínimo. El mío es GitHub Pages: <code>bentancorjuan-commits.github.io</code>.</li>
+</ul>
+<p>No:</p>
+<ul>
+<li>Empresa, LLC ni “marca registrada”.</li>
+<li>Dominio pago el día 1.</li>
+<li>Grabar un trailer cinematográfico.</li>
+<li>Pagar User Acquisition antes de que la ficha esté decente.</li>
+</ul>
+<h2>El orden que a mí me funcionó</h2>
+<ol>
+<li><strong>App usable.</strong> En Xiaomi instalo el APK de prueba (sin cable: lo mando por WhatsApp). Si yo no la usaría, Play no la va a salvar.</li>
+<li><strong>Package serio.</strong> <code>com.bentancor.misplantas</code>, <code>com.bentancor.mimascota</code>. Un identificador, para siempre.</li>
+<li><strong>i18n ES+EN.</strong> Textos de UI en los dos idiomas. Excepción consciente: SuerteUY queda solo en español porque es local.</li>
+<li><strong>Centro de ayuda adentro de la app.</strong> FAQ, tutoriales, novedades, contacto. Reduce mails y se ve profesional en la review.</li>
+<li><strong>Ficha Play.</strong> Título corto, descripción que dice el beneficio, y la frase <strong>«Gratis con anuncios»</strong> cuando hay banner. No prometas “sin anuncios” si vas a poner AdMob.</li>
+<li><strong>AAB a producción</strong> (o prueba cerrada primero si la app es más riesgosa).</li>
+<li><strong>Ads después.</strong> AdMob se vincula a la app <strong>ya publicada</strong>. Crear la unidad banner en casa y el <code>app-ads.txt</code> en el mismo dominio del sitio de la ficha.</li>
+</ol>
+<h2>Lo que Google te va a pedir igual</h2>
+<ul>
+<li>Política de privacidad / datos (qué guardás: si es local en el teléfono, decilo).</li>
+<li>Capturas reales, no mockups mentirosos.</li>
+<li>Clasificación de contenido.</li>
+<li>Si hay ads: el sitio de la ficha y el <code>app-ads.txt</code> tienen que coincidir.</li>
+</ul>
+<h2>Errores que ya cometí</h2>
+<ul>
+<li>Mezclar cuentas de AdMob. Una persona, <strong>una</strong> cuenta. Si te rechazan la verificación, se reenvía: no se abre otra.</li>
+<li>Poner “sin anuncios” en la ficha y después un banner. Inconsistente y te pueden observar.</li>
+<li>Subir APK de debug a un familiar y olvidarte de que producción es <strong>AAB + IDs reales</strong>.</li>
+<li>Gastar en Google Ads con la ficha floja. La campaña de Mi Mascota sirvió para aprender: primero orgánico y ficha, después pauta.</li>
+</ul>
+<h2>Cierre</h2>
+<p>Si estás en Uruguay, Argentina o cualquier país donde “no tengo empresa” parece un muro: no lo es para una app gratis con anuncios. El muro de verdad es <strong>terminar la app</strong> y no mentir en la ficha.</p>
+<p>Armé una guía con el checklist (cuenta, idiomas, AAB, ads, Xiaomi) para no tener que reconstruir esto de memoria cada vez. Está en Gumroad. Y si querés ver el resultado: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> están en Google Play.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>
