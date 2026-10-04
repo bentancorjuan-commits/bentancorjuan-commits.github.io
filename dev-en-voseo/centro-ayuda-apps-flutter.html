@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El centro de ayuda que me ahorra mails (FAQ, tutoriales, novedades) · Dev en Voseo</title>
+<meta name="description" content="FAQ, tutoriales, novedades y contacto adentro de la app. Sin internet. En español e inglés. Lo que uso en Mi Mascota y Mis Plantas.">
+<link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="brand" href="./"><span class="logo"></span>Dev en Voseo</a>
+  <nav>
+    <a href="./">Blog</a>
+    <a href="./guia.html">Guía Play</a>
+    <a href="./acerca.html">Acerca</a>
+  </nav>
+</header>
+
+<article class="post">
+  <p class="muted"><a href="./">← Blog</a></p>
+  <h1>El centro de ayuda que me ahorra mails (FAQ, tutoriales, novedades)</h1>
+  <p>Publicaste la app. Un usuario no encuentra el riego. Otro pregunta por qué hay un banner. Un tercero quiere “recomendarla a un amigo”. Si no hay un centro de ayuda adentro, eso llega al mail. Vos contestás a las once de la noche. La semana que viene llega el mismo mail.</p>
+<p>Esto es para quien está <strong>trabado</strong>: la app ya está en Play (semana 1 de este canal), ya tiene idiomas (semana 5), y el soporte es un Gmail abierto. No es para quien ya tiene un hub de cuatro pestañas y lo actualiza con cada versión.</p>
+<p>No hay cifra de “cuántos mails ahorré”. Hoy: que la pregunta se responda <strong>sin internet</strong> y <strong>sin vos</strong>.</p>
+<h2>El atasco no es “poner un botón de ayuda”</h2>
+<p>El atasco real se ve así:</p>
+<ul>
+<li>Solo hay un mail en Configuración. El usuario escribe. Vos contestás. Se repite.</li>
+<li>Un onboarding lindo el día uno y después silencio. Tres meses después nadie recuerda el onboarding.</li>
+<li>FAQ en un sitio web. La app sin datos. El usuario está en el ómnibus. No abre Chrome.</li>
+<li>Textos solo en español. Semana 5: la app habla inglés. El FAQ, no.</li>
+<li>Sacaste “Regar varias” y nadie actualizó Novedades. El mail dice “¿dónde está?”.</li>
+</ul>
+<p>Yo publico como particular desde Montevideo. En <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> el centro de ayuda vive <strong>adentro</strong>: FAQ, tutoriales, novedades y contacto. Sin depender de un servidor. En los dos idiomas. RachaApp, el mismo patrón cuando esté en la tienda.</p>
+<h2>Cuatro pestañas. Una sola puerta</h2>
+<p>No invento un chatbot. No invento un foro. Cuatro cosas:</p>
+<ol>
+<li><strong>FAQ.</strong> Preguntas cortas. Respuestas honestas. “¿Por qué hay anuncios?”. “¿Cómo respaldo mi lista?”. Expansión, no un PDF.</li>
+<li><strong>Tutoriales.</strong> Pasos numerados. Cómo escanear. Cómo marcar el riego. Bajo demanda: el usuario abre cuando se traba, no cuando instaló.</li>
+<li><strong>Novedades.</strong> Qué cambió en esta versión. Arriba lo más nuevo. Si sacaste una función, se dice acá. No en un tweet.</li>
+<li><strong>Contacto.</strong> Sugerencia, bug, <strong>recomendar la app</strong> (compartir el link de Play), calificar. El mail queda para lo que el FAQ no cubre.</li>
+</ol>
+<p>Acceso: ícono de ayuda en la barra, o un renglón claro en Configuración. Los dos, mejor. Onboarding no reemplaza esto: el onboarding se olvida.</p>
+<h2>Lo que hago yo</h2>
+<p>El contenido largo vive en un archivo de la app (preguntas en español y en inglés). Los títulos de pestañas van a los archivos de idioma, como el resto de la UI. Si el celular está en English, el FAQ también. Semana 5 no era decoración: el centro de ayuda tiene que cumplirla.</p>
+<p>Cada función nueva dispara tres cosas: una o dos preguntas en el FAQ, un tutorial si el flujo es nuevo, una línea en Novedades. Si no, el mail llega. “Regar varias” en Mis Plantas es el ejemplo: si no está en ayuda, Elle Déa (y quien venga) pregunta otra vez.</p>
+<p>Sin internet. Si el usuario está offline, igual lee. El soporte “abrí este link” no es soporte en el ómnibus.</p>
+<p>Recomendar la app: un botón que comparte el link de Play. Antes de “Calificar”. No es humo: es el mismo usuario que ya te usó.</p>
+<h2>Pasos (sin humo)</h2>
+<ol>
+<li><strong>Hub con cuatro pestañas</strong> antes de “pulir otra pantalla”. FAQ, tutoriales, novedades, contacto.</li>
+<li><strong>Español e inglés</strong> en las respuestas largas, no solo en el menú.</li>
+<li><strong>Cada release:</strong> actualizar Novedades. Si cambió un flujo, actualizar el tutorial.</li>
+<li><strong>Contacto</strong> con recomendar + calificar + mail. El mail no es el FAQ.</li>
+<li><strong>Probá el APK</strong> sin Wi‑Fi. Abrí ayuda. Si pide red, está mal.</li>
+<li><strong>Una pregunta de ads</strong> si hay banner: “¿Por qué hay anuncios?”. Gratis con anuncios, dijo la ficha. La ayuda lo confirma. Semana 3 del canal: el banner; esta semana: la explicación.</li>
+</ol>
+<p>En Mis Plantas, cuando alguien pregunta por el respaldo o por el riego, la respuesta ya está escrita. En Mi Mascota, lo mismo con vacunas, recordatorios y el porqué del anuncio. No es un libro. Son las diez preguntas que de verdad llegan.</p>
+<h2>Errores que ya cometí (o evité a tiempo)</h2>
+<ul>
+<li>Dejar el FAQ para “después de publicar”. Después nunca.</li>
+<li>Copiar el español al inglés y cambiar dos palabras. Se nota.</li>
+<li>Poner solo “Contacto” y creer que alcanza.</li>
+<li>Actualizar código y olvidar Novedades.</li>
+<li>Un centro lindo que no se abre desde Inicio: nadie lo encuentra.</li>
+<li>Contestar por WhatsApp “para ir más rápido”. Después no queda archivo y el próximo usuario pregunta lo mismo.</li>
+<li>Escribir respuestas de abogado. El tono es el de siempre: vos, claro, sin humo. Si hay anuncios, se dice. Si algo no se puede, se dice.</li>
+</ul>
+<p>Quien está trabado no busca “best practices de customer support 2026”. Busca por qué le llegan tres mails iguales y cómo dejar de ser el FAQ. Este canal es para ese atasco: en esta app, estas cuatro pestañas, este orden.</p>
+<h2>Cierre</h2>
+<p>Si estás trabado porque el mail no para, no es un problema de “comunidad”. Es un problema de <strong>dónde</strong> está la respuesta. Adentro. Cuatro pestañas. Dos idiomas. Sin internet. Cada versión, un renglón en Novedades.</p>
+<p>Checklist de publicar (cuenta, AAB, idiomas, ads, ayuda): guía Play LATAM, USD 9, <a href="https://bentancor2.gumroad.com/l/krcfiy">bentancor2.gumroad.com/l/krcfiy</a>. Apps: <strong>Mi Mascota</strong> y <strong>Mis Plantas</strong> en Play. La semana que viene: qué valió y qué no cuando gasté en Google Ads para Mi Mascota.</p>
+  <div class="cta-box">
+    <h2>Guía Play desde LATAM</h2>
+    <p>El checklist que uso para publicar como particular, sin empresa. USD 9 en Gumroad.</p>
+    <a class="btn btn-cta" href="./guia.html">Quiero la guía</a>
+  </div>
+</article>
+
+<footer>© 2026 Dev en Voseo · Juan Bentancor · Montevideo · Hecho con Cursor.</footer>
+</div>
+</body>
+</html>
